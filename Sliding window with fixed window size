@@ -1,0 +1,41 @@
+#Sliding window problem solution in Java:
+1.finding the sum of subarray of length constant k and printing those values.
+public class Main
+{
+	public static void main(String[] args) {
+	     int [] arr= {1,2,3,4,5,6};
+	     int k =3;
+	     int low = 0;
+	     int high =k;
+	     int sum =0;
+	     for(int i=0;i<k;i++){
+	         sum = sum +arr[i];
+	     }
+        System.out.println(sum);
+	     while(high<arr.length && low < arr.length){
+	         sum = sum+arr[high]-arr[low];
+	         high++;
+	         low++;
+	         System.out.println(sum);
+	     }
+	    
+	}
+}
+####
+output:
+6
+9
+12
+15
+
+explaination:
+arr ={1,2,3,4,5,6}
+1) Initially initializing sum of first k-length subarray.
+2) keeping a pointer at index 0,which is low  and high at index k.
+3) Incrementing the pointers less than array length.
+4) initial sum is 1+2+3 = 6, we add next number and subtract the previous number.
+    here it goes like this:
+    sum = sum+ next element - subtract previous element.
+    eg: 6+4(next number)-1(previous number)
+5) finally, prints sum of each subarray.
+
