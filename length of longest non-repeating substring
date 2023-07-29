@@ -1,0 +1,61 @@
+Aim: To find the length of longest substring from the string.
+Approches:
+                time complexity  space complexity
+1.Brute force : O(n*n)            O(1)
+2.two pointer : O(n)              O(k) k- size of substring.
+
+we follow optimal approach: two pointers.
+2)
+code:
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Character> ch = new ArrayList<>();    
+        String str = sc.next();
+        int low = 0;
+        int high = 1;
+        int maxlen=0;
+        while(high<str.length() && low <str.length()-1){
+             
+            if(str.charAt(low) != str.charAt(high)){
+                 if(!ch.contains(str.charAt(low))){
+                     ch.add(str.charAt(low));
+                 }
+
+                if(!ch.contains(str.charAt(high))){
+                ch.add(str.charAt(high));
+                  }
+
+                high++;
+                 if(ch.size()>maxlen){
+                     maxlen= ch.size();
+                 }
+                
+                
+            }
+            else{
+                ch.clear();
+                low++;
+                high = low +1;
+            }
+             
+        }
+        System.out.println("length of non repeating substring: " + maxlen); // gives max length of non repeating substring.
+    }
+}
+
+output:-
+abcabcbb
+
+length of non repeating substring: 3
+
+explaination:
+1)taking two pointers low and high.
+2)Initializing low and high with 0,1
+3)create an arraylist to store the characters.
+4)running while loop: checking whether the char at low and high are not equal. if not equal add those characters to arrayList.
+5)Increment the high pointer upto less than length of the string.
+6)if char at low and high is equal then assign the length of arraylist to maxlen variable, and clear the arraylist, increment the low to low+1 and high to low +1.
+7)Finally maxlen variable gives length of longest substring.
+$$Time complexity is O(n)
+
